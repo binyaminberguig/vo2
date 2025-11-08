@@ -4,7 +4,6 @@ import User, { IUser } from '../models/User';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret123';
 
-// ✅ Étendre Request pour inclure la propriété user
 export interface AuthRequest extends Request {
   user?: IUser;
 }
