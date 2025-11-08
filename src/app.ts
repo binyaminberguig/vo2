@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import projectRoutes from './routes/projectRoutes';
 import { AuthRequest, protect } from './middlewares/authMiddleware';
+import taskRoutes from './routes/taskRoutes';
 
 
 dotenv.config();
@@ -11,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/tasks', taskRoutes);
 
 
 app.get('/api/profile', protect, (req: AuthRequest, res) => {
