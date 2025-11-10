@@ -2,8 +2,9 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import projectRoutes from './routes/projectRoutes';
-import { AuthRequest, protect } from './middlewares/authMiddleware';
 import taskRoutes from './routes/taskRoutes';
+import userRoutes from './routes/userRoutes';
+import commentRoutes from './routes/commentRoutes';
 
 
 dotenv.config();
@@ -13,11 +14,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
-
-
-app.get('/api/profile', protect, (req: AuthRequest, res) => {
-  res.json({ message: `Hello ${req.user?.name}`, user: req.user });
-});
+app.use('/api/users', userRoutes);
+app.use('/api', commentRoutes);
 
 app.get('/api/health', (req: Request, res: Response) => {
   res.status(200).json({ message: 'Server running with TypeScript!' });

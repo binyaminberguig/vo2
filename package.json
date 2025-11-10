@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand",
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "NODE_ENV=development ts-node-dev --respawn src/server.ts"
+    "dev": "ts-node-dev --respawn --env-file=.development.env src/server.ts",
+    "test": "jest --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,8 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.3"
+    "mongoose": "^8.19.3",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
