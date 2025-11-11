@@ -24,6 +24,7 @@ export const protect = async (req: AuthRequest, res: Response, next: NextFunctio
     req.user = await User.findById(decoded.id).select('-password');
     next();
   } catch (error) {
+    console.error(error);
     res.status(401).json({ message: 'Invalid or expired token' });
   }
 };

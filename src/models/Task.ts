@@ -20,7 +20,7 @@ const taskSchema = new Schema<ITask>(
     projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
     assignedTo: { type: Schema.Types.ObjectId, ref: 'User' },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model<ITask>('Task', taskSchema);

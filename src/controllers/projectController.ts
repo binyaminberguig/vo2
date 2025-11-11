@@ -24,41 +24,28 @@ export const createProject = async (req: AuthRequest, res: Response, next: NextF
   }
 };
 
-export const getProjectById = async (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const getProjectById = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
 
-    // 1️⃣ Récupère le projet
-    const project = await Project.findById(id)
-      .populate('owner', 'name email')
-      .lean(); // lean pour renvoyer un objet simple (et rapide)
+    const project = await Project.findById(id).populate('owner', 'name email').lean();
 
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
 
-    // 2️⃣ Récupère toutes les tâches liées à ce projet
-    const tasks = await Task.find({ projectId: id })
-      .populate('assignedTo', 'name email')
-      .lean();
+    const tasks = await Task.find({ projectId: id }).populate('assignedTo', 'name email').lean();
 
-    // 3️⃣ Pour chaque tâche, récupère ses commentaires
-    const taskIds = tasks.map(t => t._id);
+    const taskIds = tasks.map((t) => t._id);
     const comments = await Comment.find({ task: { $in: taskIds } })
       .populate('author', 'name email')
       .lean();
 
-    // 4️⃣ Attache les commentaires à leurs tâches
-    const tasksWithComments = tasks.map(task => ({
+    const tasksWithComments = tasks.map((task) => ({
       ...task,
-      comments: comments.filter(c => c.task.toString() === task._id.toString()),
+      comments: comments.filter((c) => c.task?.toString?.() === task._id.toString()),
     }));
 
-    // 5️⃣ Structure finale
     const projectWithTasks = {
       ...project,
       tasks: tasksWithComments,

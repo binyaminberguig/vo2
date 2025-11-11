@@ -13,7 +13,7 @@ const commentSchema = new Schema<IComment>(
     author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     task: { type: Schema.Types.ObjectId, ref: 'Task', required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model<IComment>('Comment', commentSchema);

@@ -163,3 +163,4 @@ git commit -m '[ticket-5]: comment module + unit test'
   1. `User`, `Project`, `Task`  
   2. `Comment`  
 - JWT is used to secure endpoints and authenticate users.
+- Use the prettier, eslint and Error Lens extensions in order to format your code

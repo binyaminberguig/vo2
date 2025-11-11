@@ -12,7 +12,7 @@ const projectSchema = new Schema<IProject>(
     description: { type: String },
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model<IProject>('Project', projectSchema);
