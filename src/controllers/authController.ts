@@ -8,7 +8,6 @@ const generateToken = (id: string) => {
   return jwt.sign({ id }, JWT_SECRET, { expiresIn: '1h' });
 };
 
-// 🧩 Enregistrement
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, email, password } = req.body;
@@ -29,7 +28,6 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
   }
 };
 
-// 🔑 Connexion
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = req.body;

@@ -48,7 +48,7 @@ export const updateTaskStatus = async (req: AuthRequest, res: Response, next: Ne
       return res.status(400).json({ message: 'Invalid status value' });
 
     const task = await Task.findById(id).populate('project');
-    
+
     if (!task) return res.status(404).json({ message: 'Task not found' });
 
     task.status = status;

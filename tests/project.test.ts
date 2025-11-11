@@ -21,13 +21,13 @@ const mockResponse = () => {
 const mockNext: NextFunction = jest.fn();
 
 describe('Project Controller', () => {
-    const mockUser: IUser = {
-        _id: new Types.ObjectId(),
-        name: 'John',
-        email: 'john@test.com',
-        password: 'hashedpassword',
-        comparePassword: jest.fn()
-    } as unknown as IUser;
+  const mockUser: IUser = {
+    _id: new Types.ObjectId(),
+    name: 'John',
+    email: 'john@test.com',
+    password: 'hashedpassword',
+    comparePassword: jest.fn(),
+  } as unknown as IUser;
 
   beforeEach(() => {
     jest.clearAllMocks();

@@ -52,7 +52,7 @@ fdescribe('Auth Controller', () => {
             name: 'Ben',
             email: 'ben@test.com',
           }),
-        })
+        }),
       );
     });
 
@@ -105,7 +105,7 @@ fdescribe('Auth Controller', () => {
           user: expect.objectContaining({
             email: 'ben@test.com',
           }),
-        })
+        }),
       );
     });
 
