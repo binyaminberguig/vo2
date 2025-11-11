@@ -1,9 +1,14 @@
 import app from './app';
 import mongoose from 'mongoose';
 
-const PORT = process.env.PORT || 8080;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://berguigbinyamin:admin@cluster0.gbv3omc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-console.log(process.env.PORT);
+const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error('Database URI is undefined');
+  process.exit(1);
+}
+
 mongoose
   .connect(MONGO_URI)
   .then(() => {
